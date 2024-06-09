@@ -4,6 +4,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = @user.books
+    @today_books_count = @books.created_today.count
+    @yesterday_books_count = @books.created_yesterday.count
+    @this_week_books_count = @books.created_this_week.count
+    @last_week_books_count = @books.created_last_week.count
+    service = PostCountService.new
+    @compare_with_previous_day = service.compare_with_previous(@today_books_count, @yesterday_books_count)
+    @compare_with_previous_week = service.compare_with_previous(@this_week_books_count, @last_week_books_count)
     @book = Book.new
   end
 
