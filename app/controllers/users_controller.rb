@@ -4,6 +4,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = @user.books
+    @book_count_today = @books.created_today.count
+    @book_count_1days_ago = @books.created_1days_ago.count
+    @book_count_2days_ago = @books.created_2days_ago.count
+    @book_count_3days_ago = @books.created_3days_ago.count
+    @book_count_4days_ago = @books.created_4days_ago.count
+    @book_count_5days_ago = @books.created_5days_ago.count
+    @book_count_6days_ago = @books.created_6days_ago.count
     @book = Book.new
   end
 
