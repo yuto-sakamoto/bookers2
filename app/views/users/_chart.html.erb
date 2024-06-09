@@ -1,0 +1,46 @@
+ <canvas id="postCountChart"></canvas>
+ <script>
+    $(document).on('turbolinks:load', function() {
+      var ctx = document.getElementById("postCountChart");
+      var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
+          datasets: [
+            {
+              label: '投稿した本の数',
+              data: [
+                <%= book_count_6days_ago %>,
+                <%= book_count_5days_ago %>,
+                <%= book_count_4days_ago %>,
+                <%= book_count_3days_ago %>,
+                <%= book_count_2days_ago %>,
+                <%= book_count_1days_ago %>,
+                <%= book_count_today %>
+              ],
+              borderColor: "rgba(0,0,255,1)",
+              backgroundColor: "rgba(0,0,0,0)",
+              tension: 0.4
+            }
+          ],
+        },
+        options: {
+          plugins: {
+            title: {
+              display: true,
+              text: '7日間の投稿数の比較'
+            },
+          },
+          scales: {
+            y:{
+              suggestedMin: 0,
+              suggestedMax: 10
+            },
+            x:{
+              stacked: true
+            },
+          },
+        }
+      });
+    });
+</script>

@@ -21,6 +21,17 @@
                     , book_count_today:     @book_count_today \
                   }
       %>
+      <%= render 'chart', \
+                  {
+                      book_count_6days_ago: @book_count_6days_ago \
+                    , book_count_5days_ago: @book_count_5days_ago \
+                    , book_count_4days_ago: @book_count_4days_ago \
+                    , book_count_3days_ago: @book_count_3days_ago \
+                    , book_count_2days_ago: @book_count_2days_ago \
+                    , book_count_1days_ago: @book_count_1days_ago \
+                    , book_count_today:     @book_count_today \
+                  }
+      %>
     </div>
   </div>
 </div>
