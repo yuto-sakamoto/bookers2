@@ -26,6 +26,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def search
+    @user = User.find(params[:user_id])
+    @books = @user.books
+    @book = Book.new
+    if params[:created_at] == ""
+      @search_book = "日付を選択してください"
+    else
+      @search_book = @books.created_day(params[:created_at]).count
+    end
+  end
+
   private
 
   def user_params
